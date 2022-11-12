@@ -13,13 +13,16 @@
         @foreach ($series as $serie)
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{ $serie->nome }}
-                <form action="{{ route('series.destroy', $serie->id) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger btn-sm">
-                        X
-                    </button>
-                </form>
+                <div class="d-flex gap-1">
+                    <a class="btn btn-warning btn-sm" href="{{ route('series.edit', $serie->id) }}">E</a>
+                    <form action="{{ route('series.destroy', $serie->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger btn-sm">
+                            X
+                        </button>
+                    </form>
+                </div>
             </li>
         @endforeach
     </ul>
